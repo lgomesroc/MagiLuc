@@ -3,7 +3,7 @@
 namespace Tests\Unit\Services;
 
 use App\Services\HistoricoService;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class HistoricoServiceTest extends TestCase
 {

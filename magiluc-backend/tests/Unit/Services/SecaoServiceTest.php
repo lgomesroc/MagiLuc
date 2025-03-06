@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Services\SecaoService;
-use Tests\TestCase;
+use Services\SecaoService;
+use PHPUnit\Framework\TestCase;
 
 class SecaoServiceTest extends TestCase
 {

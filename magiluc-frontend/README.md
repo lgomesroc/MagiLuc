@@ -42,39 +42,40 @@ Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazen
    ```bash
    git clone https://github.com/seu-usuario/magiluc-frontend.git
    cd magiluc-frontend
-Instale as dependências:
-
-bash
-Copy
+   ```
+2. Instale as dependências:
+```bash
 npm install
+```
 ou
-
-bash
-Copy
+```bash
 yarn install
-Configure a URL da API:
+```
+
+### Configure a URL da API:
 
 No diretório src/services/, atualize a constante API_URL em cada arquivo de serviço (bebidasService.js, estoqueService.js, etc.) com a URL do backend.
 
 Exemplo:
 
-javascript
-Copy
+```javascript
 const API_URL = 'http://localhost:8000'; // URL do backend
-Inicie o servidor de desenvolvimento:
+```
 
-bash
-Copy
+### Inicie o servidor de desenvolvimento:
+
+```bash
 npm start
+```
 ou
 
-bash
-Copy
+```bash
 yarn start
+```
 O frontend estará disponível em http://localhost:3000.
 
 Estrutura do Projeto
-Copy
+```
 magiluc-frontend/
 ├── public/
 ├── src/
@@ -109,3 +110,29 @@ magiluc-frontend/
 │   └── index.css
 ├── package.json
 └── README.md
+```
+
+## Contribuição
+- Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+
+- Faça um fork do projeto.
+
+- Crie uma branch para sua feature (git checkout -b feature/nova-feature).
+
+- Commit suas mudanças (git commit -m 'Adicionando nova feature').
+
+- Push para a branch (git push origin feature/nova-feature).
+
+- Abra um Pull Request.
+
+## Licença
+Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+## Contato
+- Nome: Luciano Rocha
+
+- Email: lgomesroc2012@gmail.com
+
+- LinkedIn: linkedin.com/in/lgomesroc
+
+- Bitbucket: bitbucket.org/lgomesroc

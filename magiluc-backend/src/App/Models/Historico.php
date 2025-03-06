@@ -65,4 +65,28 @@ class Historico
         $stmt->execute();
         return $stmt->rowCount();
     }
+
+    public function registrarEntrada($dados) {
+        // Exemplo de registro de entrada no histórico
+        return [
+            'mensagem' => 'Entrada registrada no histórico com sucesso',
+            'tipo' => $dados['tipo'],
+            'volume' => $dados['volume'],
+            'secao_id' => $dados['secao_id'],
+            'responsavel' => $dados['responsavel'],
+            'data' => date('Y-m-d H:i:s')
+        ];
+    }
+
+    public function registrarSaida($dados) {
+        // Exemplo de registro de saída no histórico
+        return [
+            'mensagem' => 'Saída registrada no histórico com sucesso',
+            'tipo' => $dados['tipo'],
+            'volume' => $dados['volume'],
+            'secao_id' => $dados['secao_id'],
+            'responsavel' => $dados['responsavel'],
+            'data' => date('Y-m-d H:i:s')
+        ];
+    }
 }

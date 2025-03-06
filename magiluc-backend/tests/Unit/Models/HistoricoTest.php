@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Historico;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class HistoricoTest extends TestCase
 {

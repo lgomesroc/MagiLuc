@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Bebida;
+use Models\Bebida;
 use App\Core\Interfaces\ServiceInterface; // Importação corrigida
 
 class BebidaService implements ServiceInterface

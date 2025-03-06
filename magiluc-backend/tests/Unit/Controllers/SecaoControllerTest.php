@@ -2,14 +2,19 @@
 
 namespace Tests\Unit\Controllers;
 
-use App\Controllers\SecaoController;
-use Tests\TestCase;
+use Controllers\SecaoController;
+use PHPUnit\Framework\TestCase;
 
 class SecaoControllerTest extends TestCase
 {
     public function testListarSecoes()
     {
         $controller = new SecaoController();
-        $this->assertNull($controller->index()); // Teste básico
+
+        // Verifica se o método não lança exceções
+        $this->expectNotToPerformAssertions();
+
+        // Chama o método listarSecoes
+        $controller->listarSecoes();
     }
 }

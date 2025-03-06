@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Bebida;
-use Tests\TestCase;
+use Models\Bebida;
+use PHPUnit\Framework\TestCase;
 
 class BebidaTest extends TestCase
 {

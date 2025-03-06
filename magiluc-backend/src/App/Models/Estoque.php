@@ -125,4 +125,10 @@ class Estoque {
     
         return $stmt->fetch()['volume_total'];
     }
+
+    public function getAll() {
+        $query = "SELECT * FROM estoque";
+        $stmt = $this->conexao->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
