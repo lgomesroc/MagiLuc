@@ -1,0 +1,10 @@
+# Configurações do editor
+.vscode/
+
+# Configurações do Git
+.git/
+
+# Outros arquivos temporários ou sensíveis na raiz
+*.env
+*.log
+.DS_Store

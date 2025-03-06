@@ -1,0 +1,11 @@
+bebidas:
+  - id: 1
+    tipo: "Alcoólica"
+    nome: "Cerveja"
+    volume: 500
+    secao: 1
+  - id: 2
+    tipo: "Não Alcoólica"
+    nome: "Refrigerante"
+    volume: 400
+    secao: 2

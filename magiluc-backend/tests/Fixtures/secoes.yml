@@ -1,0 +1,7 @@
+secoes:
+  - id: 1
+    tipo: "Alcoólica"
+    capacidade: 500
+  - id: 2
+    tipo: "Não Alcoólica"
+    capacidade: 400

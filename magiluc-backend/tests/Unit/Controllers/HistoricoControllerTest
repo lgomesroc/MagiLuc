@@ -1,0 +1,15 @@
+<?php
+
+namespace Tests\Unit\Controllers;
+
+use App\Controllers\HistoricoController;
+use Tests\TestCase;
+
+class HistoricoControllerTest extends TestCase
+{
+    public function testListarHistorico()
+    {
+        $controller = new HistoricoController();
+        $this->assertNull($controller->index()); // Teste básico
+    }
+}

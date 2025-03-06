@@ -1,0 +1,16 @@
+# Pasta node_modules
+/node_modules/
+
+# Build ou arquivos gerados
+/dist/
+/build/
+
+# Configurações locais de ambiente
+.env.local
+.env.development
+.env.production
+
+# Arquivos temporários
+*.log
+*.tmp
+.DS_Store

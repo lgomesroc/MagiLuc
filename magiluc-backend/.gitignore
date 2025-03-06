@@ -1,0 +1,16 @@
+# Pasta vendor
+/vendor/
+
+# Arquivo .htaccess (adicione esta linha se quiser ignorá-lo)
+.htaccess
+
+# Arquivos temporários e de logs
+*.log
+*.bak
+*.tmp
+
+# Configurações de ambiente
+.env
+
+# Outros arquivos e pastas comuns de backend
+/storage/
