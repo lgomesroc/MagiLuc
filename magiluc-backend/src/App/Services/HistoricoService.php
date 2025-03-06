@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Historico;
+use App\Core\Interfaces\ServiceInterface;
 
 class HistoricoService implements ServiceInterface
 {

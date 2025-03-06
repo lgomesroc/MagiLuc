@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Services\EstoqueService;
-use Tests\TestCase;
+use Services\EstoqueService;
+use PHPUnit\Framework\TestCase;
 
 class EstoqueServiceTest extends TestCase
 {

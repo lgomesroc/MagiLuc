@@ -4,7 +4,7 @@ namespace Tests\Unit\Services;
 
 use App\Services\BebidaService;
 use App\Models\Bebida;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use PDOException;
 
 class BebidaServiceTest extends TestCase

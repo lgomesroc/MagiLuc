@@ -79,4 +79,8 @@ class Secao {
         // Se o tipo for diferente do permitido, não pode adicionar
         return $tipoPermitido === $tipo;
     }
+
+    public function getConnection() {
+        return $this->conexao;
+    }
 }

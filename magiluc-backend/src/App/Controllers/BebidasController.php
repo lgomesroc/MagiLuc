@@ -13,7 +13,7 @@ class BebidasController {
 
     public function listarBebidas() {
         try {
-            $bebidas = $this->bebidaModel->listarTodas();
+            $bebidas = $this->bebidaModel->getAll();
             Flight::json($bebidas);
         } catch (\Exception $e) {
             Flight::json(['erro' => $e->getMessage()], 500);
@@ -29,7 +29,7 @@ class BebidasController {
                 throw new \Exception("Dados incompletos para cadastro");
             }
 
-            $resultado = $this->bebidaModel->cadastrar($dados);
+            $resultado = $this->bebidaModel->create($dados);
             Flight::json($resultado, 201);
         } catch (\Exception $e) {
             Flight::json(['erro' => $e->getMessage()], 400);

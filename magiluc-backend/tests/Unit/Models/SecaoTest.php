@@ -2,15 +2,23 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Secao;
-use Tests\TestCase;
+use Models\Secao;
+use PHPUnit\Framework\TestCase;
 
 class SecaoTest extends TestCase
 {
-    public function testGetAllSecoes()
+    public function testListarSecoes()
     {
+        // Cria uma instância da classe Secao
         $secao = new Secao();
-        $result = $secao->getAll();
+
+        // Chama o método listarSecoes
+        $result = $secao->listarSecoes();
+
+        // Verifica se o resultado é um array
         $this->assertIsArray($result);
+
+        // Verifica se o array não está vazio (opcional)
+        $this->assertNotEmpty($result);
     }
 }
