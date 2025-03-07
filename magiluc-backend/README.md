@@ -23,6 +23,7 @@ Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, u
 - **Conteinerização**: Docker
 
 ## Estrutura do Projeto
+```Markdown
 magiluc-backend/
 ├── docker-compose.yml
 ├── magiluc-backend
@@ -78,7 +79,7 @@ magiluc-backend/
 │ │ ├── EstoqueServiceTest.php
 │ │ ├── HistoricoServiceTest.php
 │ │ └── SecaoServiceTest.php
-
+```
 
 
 ## Como Executar o Projeto
@@ -97,66 +98,55 @@ magiluc-backend/
    git clone https://bitbucket.org/lgomesroc/magiluc.git
    cd magiluc
 ```
-Instale as dependências:
+2. **Instale as dependências**:
 
 ```bash
 composer install
 ```
-Configure o banco de dados:
 
-Crie um banco de dados MySQL.
+### Configure o banco de dados:
 
-Configure as credenciais do banco de dados no arquivo config/database.php.
+1. **Crie um banco de dados MySQL**.
 
-Execute as migrações (se houver):
+2. **Configure as credenciais do banco de dados no arquivo config/database.php**.
 
-bash
-Copy
-php artisan migrate
-Inicie o servidor:
+3. **Inicie o servidor**:
 
-bash
-Copy
+```bash
 php -S localhost:8000 -t public
-Acesse a API:
+```
+## Acesse a API:
 
-A API estará disponível em http://localhost:8000.
+A API estará disponível somente via Docker.
 
-Executando com Docker
-Se preferir, você pode executar o projeto usando Docker:
+## Executando com Docker
+Execute o projeto usando Docker:
 
-Suba os contêineres:
+### Suba os contêineres:
 
-bash
-Copy
+```bash
 docker-compose up -d
-Acesse a API:
+```
+### Acesse a API:
 
 A API estará disponível em http://localhost:8000.
 
-Testes
+## Testes
 Para executar os testes unitários, utilize o PHPUnit:
-
-bash
-Copy
+```bash
 ./vendor/bin/phpunit tests/
-
+```
 
 ### Criação do Banco de Dados
 
-sql
-
+```sql
 CREATE DATABASE magiluc_db;
 USE magiluc_db;
-
+```
 ### Criação das Tabelas
-
-
-a) Tabela secoes
-Armazena as seções do depósito.
-
-sql
-Copy
+a) **Tabela secoes**
+#### Armazena as seções do depósito.
+```sql
 CREATE TABLE secoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -164,12 +154,10 @@ CREATE TABLE secoes (
     capacidade_alcoolica INT NOT NULL,
     capacidade_nao_alcoolica INT NOT NULL
 );
-
-b) Tabela bebidas
-Armazena as bebidas.
-
-sql
-Copy
+```
+b) **Tabela bebidas**
+#### Armazena as bebidas.
+```sql
 CREATE TABLE bebidas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -178,12 +166,10 @@ CREATE TABLE bebidas (
     secao_id INT,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
 );
-
-c) Tabela estoque
-Armazena o estoque de bebidas por seção.
-
-sql
-Copy
+```
+c) **Tabela estoque**
+#### Armazena o estoque de bebidas por seção.
+```sql
 CREATE TABLE estoque (
     id INT AUTO_INCREMENT PRIMARY KEY,
     secao_id INT NOT NULL,
@@ -192,12 +178,10 @@ CREATE TABLE estoque (
     data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
 );
-
+```
 d) Tabela historico
-Armazena o histórico de entradas e saídas de bebidas.
-
-sql
-Copy
+#### Armazena o histórico de entradas e saídas de bebidas.
+```sql
 CREATE TABLE historico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     secao_id INT NOT NULL,
@@ -208,37 +192,33 @@ CREATE TABLE historico (
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
 );
-
+```
 3. Inserção de Dados Iniciais
-Aqui estão as queries para inserir dados iniciais nas tabelas:
+Aqui as queries para inserir dados iniciais nas tabelas:
 
-a) Inserir Seções
-sql
-Copy
+a) **Inserir Seções**
+```sql
 INSERT INTO secoes (nome, tipo_permitido, capacidade_alcoolica, capacidade_nao_alcoolica) VALUES
 ('Seção 1', NULL, 500, 400),
 ('Seção 2', NULL, 500, 400),
 ('Seção 3', NULL, 500, 400),
 ('Seção 4', NULL, 500, 400),
 ('Seção 5', NULL, 500, 400);
-
-b) Inserir Bebidas
-sql
-Copy
+```
+b) **Inserir Bebidas**
+```sql
 INSERT INTO bebidas (nome, tipo, volume, secao_id) VALUES
 ('Cerveja', 'alcoolica', 500, 1),
 ('Refrigerante', 'nao_alcoolica', 400, 2);
-
-c) Inserir Estoque
-sql
-Copy
+```
+c) **Inserir Estoque**
+```sql
 INSERT INTO estoque (secao_id, tipo, volume) VALUES
 (1, 'alcoolica', 500),
 (2, 'nao_alcoolica', 400);
-
-Inserir Histórico
-sql
-
+```
+d) **Inserir Histórico**
+```sql
 INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALUES
 -- Entrada de bebida alcoólica na Seção 1
 (1, 'alcoolica', 500, 'entrada', 'João Silva', '2023-10-01 10:00:00'),
@@ -257,34 +237,30 @@ INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALU
 
 -- Saída de bebida não alcoólica na Seção 2
 (2, 'nao_alcoolica', 100, 'saida', 'Ana Pereira', '2023-10-02 11:00:00');
+```
 
+## Contribuição
+- Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 
+- Faça um fork do projeto.
 
+- Crie uma branch para sua feature (git checkout -b feature/nova-feature).
 
+- Commit suas mudanças (git commit -m 'Adicionando nova feature').
 
+- Push para a branch (git push origin feature/nova-feature).
 
-Contribuição
-Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+- Abra um Pull Request.
 
-Faça um fork do projeto.
-
-Crie uma branch para sua feature (git checkout -b feature/nova-feature).
-
-Commit suas mudanças (git commit -m 'Adicionando nova feature').
-
-Push para a branch (git push origin feature/nova-feature).
-
-Abra um Pull Request.
-
-Licença
+## Licença
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-Contato
-Nome: Luciano Rocha
+## Contato
+- Nome: Luciano Rocha
 
-Email: lgomesroc2012@gmail.com
+- Email: lgomesroc2012@gmail.com
 
-LinkedIn: linkedin.com/in/lgomesroc
+- LinkedIn: linkedin.com/in/lgomesroc
 
-Bitbucket: bitbucket.org/lgomesroc
+- Bitbucket: bitbucket.org/lgomesroc
 

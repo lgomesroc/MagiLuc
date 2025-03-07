@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use App\Services\HistoricoService;
-use PHPUnit\Framework\TestCase;
+use App\Models\Historico;
+use Tests\TestCase;
 
 class HistoricoServiceTest extends TestCase
 {
