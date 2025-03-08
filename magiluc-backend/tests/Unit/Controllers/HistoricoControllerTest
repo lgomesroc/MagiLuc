@@ -11,10 +11,10 @@ class HistoricoControllerTest extends TestCase
     {
         $controller = new HistoricoController();
 
-        // Verifica se o método não lança exceções
+        
         $this->expectNotToPerformAssertions();
 
-        // Chama o método
+        
         $controller->index();
     }
 }

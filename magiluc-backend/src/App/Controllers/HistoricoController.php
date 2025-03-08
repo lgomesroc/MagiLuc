@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Services\HistoricoService;
-use App\Core\Interfaces\ControllerInterface; // Importação da interface
+use App\Core\Interfaces\ControllerInterface;
 use Flight;
 
 class HistoricoController implements ControllerInterface

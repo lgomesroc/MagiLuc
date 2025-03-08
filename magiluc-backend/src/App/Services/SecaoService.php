@@ -1,7 +1,7 @@
 <?php
 namespace Services;
 
-use Models\Secao;
+use App\Models\Secao;
 use Models\Estoque;
 
 class SecaoService {
@@ -33,12 +33,12 @@ class SecaoService {
     }
 
     public function atualizarTipoPermitido($secaoId, $tipo) {
-        // Validar tipo de bebida
+        
         if (!in_array($tipo, ['alcoolica', 'nao_alcoolica', null])) {
             throw new \Exception("Tipo de bebida inválido");
         }
 
-        // Verificar se já existe algum estoque na seção
+        
         $estoqueExistente = $this->estoqueModel->verificarVolumeEstoqueSecao($secaoId);
         
         if ($estoqueExistente > 0) {

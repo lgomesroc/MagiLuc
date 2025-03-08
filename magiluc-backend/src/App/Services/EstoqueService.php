@@ -28,20 +28,20 @@ class EstoqueService {
     }
 
     public function registrarEntrada($dados) {
-        // Validações de entrada
+        
         $this->validarEntrada($dados);
 
-        // Verificar disponibilidade de seções
+        
         $secoesDisponiveis = $this->encontrarLocaisDisponiveis($dados->tipo, $dados->volume);
 
-        // Registrar entrada no estoque
+        
         $entradaEstoque = $this->estoqueModel->adicionarVolume(
             $secoesDisponiveis[0]['secao_id'], 
             $dados->tipo, 
             $dados->volume
         );
 
-        // Registrar histórico
+        
         $historicoEntrada = $this->historicoModel->registrarEntrada([
             'tipo' => $dados->tipo,
             'volume' => $dados->volume,
@@ -56,17 +56,17 @@ class EstoqueService {
     }
 
     public function registrarSaida($dados) {
-        // Validações de saída
+        
         $this->validarSaida($dados);
 
-        // Registrar saída no estoque
+        
         $saidaEstoque = $this->estoqueModel->removerVolume(
             $dados->secao_id, 
             $dados->tipo, 
             $dados->volume
         );
 
-        // Registrar histórico
+        
         $historicoSaida = $this->historicoModel->registrarSaida([
             'tipo' => $dados->tipo,
             'volume' => $dados->volume,
@@ -81,17 +81,17 @@ class EstoqueService {
     }
 
     private function validarEntrada($dados) {
-        // Verificar se todos os campos necessários estão presentes
+        
         if (!isset($dados->tipo, $dados->volume, $dados->responsavel)) {
             throw new \Exception("Dados incompletos para entrada");
         }
 
-        // Validar tipo de bebida
+        
         if (!in_array($dados->tipo, ['alcoolica', 'nao_alcoolica'])) {
             throw new \Exception("Tipo de bebida inválido");
         }
 
-        // Verificar restrição de tipo por seção no mesmo dia
+        
         $ultimaEntradaDia = $this->estoqueModel->buscarUltimaEntradaDia($dados->tipo);
         if ($ultimaEntradaDia) {
             throw new \Exception("Não é possível adicionar outro tipo de bebida na mesma seção no mesmo dia");
@@ -99,12 +99,12 @@ class EstoqueService {
     }
 
     private function validarSaida($dados) {
-        // Verificar se todos os campos necessários estão presentes
+        
         if (!isset($dados->tipo, $dados->volume, $dados->secao_id, $dados->responsavel)) {
             throw new \Exception("Dados incompletos para saída");
         }
 
-        // Verificar volume disponível na seção
+        
         $volumeDisponivel = $this->estoqueModel->verificarVolumeDisponivel($dados->secao_id, $dados->tipo);
         if ($volumeDisponivel < $dados->volume) {
             throw new \Exception("Volume indisponível para saída");

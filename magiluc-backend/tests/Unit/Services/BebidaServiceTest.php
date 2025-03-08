@@ -3,7 +3,6 @@
 namespace Tests\Unit\Services;
 
 use App\Services\BebidaService;
-use App\Models\Bebida;
 use PHPUnit\Framework\TestCase;
 use PDOException;
 
@@ -38,6 +37,6 @@ class BebidaServiceTest extends TestCase
     public function testDeleteBebida()
     {
         $this->expectException(PDOException::class);
-        $this->bebidaService->delete(999); // ID inexistente
+        $this->bebidaService->delete(999);
     }
 }
