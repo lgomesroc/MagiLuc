@@ -106,7 +106,7 @@ Só através via Docker.
 
 Dentro do Docker:
 
-1. **Crie um banco de dados MySQL**. (As queries para criar e popular o banco está mais abaixo)
+1. **Crie um banco de dados MySQL**. (As queries para criar e popular o banco estão mais abaixo)
 
 2. **Configure as credenciais do banco de dados no arquivo config/database.php**.
 
@@ -314,6 +314,7 @@ Estrutura do Projeto
 ```
 magiluc-frontend/
 ├── public/
+│   ├── index.html
 ├── src/
 │   ├── components/
 │   │   ├── Bebidas/
