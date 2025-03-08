@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Estoque de Bebidas - MagiLuc
+# Sistema de gerenciamento de estoque de bebidas - MagiLuc
 
 Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, utilizando o framework Flight para a criação de APIs RESTful. O sistema permite gerenciar o estoque de bebidas alcoólicas e não alcoólicas em um depósito com 5 seções, cada uma com capacidade específica para cada tipo de bebida.
 
@@ -14,7 +14,7 @@ Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, u
   - Não há entrada ou saída de estoque sem registro no histórico.
   - Uma seção não pode receber bebidas não alcoólicas se recebeu alcoólicas no mesmo dia.
 
-## Tecnologias Utilizadas
+## Tecnologias utilizadas
 
 - **Backend**: PHP, Flight PHP
 - **Banco de Dados**: MySQL
@@ -22,8 +22,8 @@ Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, u
 - **Testes**: PHPUnit
 - **Conteinerização**: Docker
 
-## **MagiLuc Backend**
-### Estrutura do Projeto
+## **MagiLuc backend**
+### Estrutura do projeto
 ```Markdown
 magiluc-backend/
 ├── docker-compose.yml
@@ -82,7 +82,7 @@ magiluc-backend/
 │ │ └── SecaoServiceTest.php
 ```
 
-## Como Executar o Projeto
+## Como executar o projeto
 
 ### Pré-requisitos
 
@@ -91,7 +91,7 @@ magiluc-backend/
 - Composer
 - Docker
 
-### Passos para Execução
+### Passos para execução
 
 1. **Clone o repositório**:
 ```bash
@@ -137,7 +137,7 @@ Para executar os testes unitários, utilize o PHPUnit:
 ./vendor/bin/phpunit tests/
 ```
 
-### Criação do Banco de Dados
+### Criação do banco de dados
 
 ```sql
 CREATE DATABASE magiluc_db;
@@ -193,10 +193,10 @@ CREATE TABLE historico (
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
 );
 ```
-3. Inserção de Dados Iniciais
+3. Inserção de dados iniciais
 Aqui as queries para inserir dados iniciais nas tabelas:
 
-a) **Inserir Seções**
+a) **Inserir seções**
 ```sql
 INSERT INTO secoes (nome, tipo_permitido, capacidade_alcoolica, capacidade_nao_alcoolica) VALUES
 ('Seção 1', NULL, 500, 400),
@@ -205,59 +205,59 @@ INSERT INTO secoes (nome, tipo_permitido, capacidade_alcoolica, capacidade_nao_a
 ('Seção 4', NULL, 500, 400),
 ('Seção 5', NULL, 500, 400);
 ```
-b) **Inserir Bebidas**
+b) **Inserir bebidas**
 ```sql
 INSERT INTO bebidas (nome, tipo, volume, secao_id) VALUES
 ('Cerveja', 'alcoolica', 500, 1),
 ('Refrigerante', 'nao_alcoolica', 400, 2);
 ```
-c) **Inserir Estoque**
+c) **Inserir estoque**
 ```sql
 INSERT INTO estoque (secao_id, tipo, volume) VALUES
 (1, 'alcoolica', 500),
 (2, 'nao_alcoolica', 400);
 ```
-d) **Inserir Histórico**
+d) **Inserir histórico**
 ```sql
 INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALUES
--- Entrada de bebida alcoólica na Seção 1
+-- Entrada de bebida alcoólica na seção 1
 (1, 'alcoolica', 500, 'entrada', 'João Silva', '2023-10-01 10:00:00'),
 
--- Saída de bebida alcoólica na Seção 1
+-- Saída de bebida alcoólica na seção 1
 (1, 'alcoolica', 200, 'saida', 'Maria Oliveira', '2023-10-01 12:00:00'),
 
--- Entrada de bebida não alcoólica na Seção 2
+-- Entrada de bebida não alcoólica na seção 2
 (2, 'nao_alcoolica', 400, 'entrada', 'Carlos Souza', '2023-10-01 14:00:00'),
 
--- Saída de bebida não alcoólica na Seção 2
+-- Saída de bebida não alcoólica na seção 2
 (2, 'nao_alcoolica', 150, 'saida', 'Ana Pereira', '2023-10-01 16:00:00'),
 
--- Entrada de bebida alcoólica na Seção 1
+-- Entrada de bebida alcoólica na seção 1
 (1, 'alcoolica', 300, 'entrada', 'João Silva', '2023-10-02 09:00:00'),
 
--- Saída de bebida não alcoólica na Seção 2
+-- Saída de bebida não alcoólica na seção 2
 (2, 'nao_alcoolica', 100, 'saida', 'Ana Pereira', '2023-10-02 11:00:00');
 ```
 
-## **MagiLuc Frontend**
+## **MagiLuc frontend**
 
 Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazenamento e estoque de bebidas em um depósito. O frontend foi construído com **React** e se integra a uma API RESTful desenvolvida em PHP.
 
 ### Funcionalidades
 
-- **Gerenciamento de Bebidas:**
+- **Gerenciamento de bebidas:**
   - Cadastro e consulta de bebidas.
   - Detalhes de cada bebida.
-- **Gerenciamento de Estoque:**
+- **Gerenciamento de estoque:**
   - Registro de entrada e saída de bebidas.
   - Consulta do volume total por tipo de bebida.
-- **Histórico de Movimentações:**
+- **Histórico de movimentações:**
   - Visualização do histórico de entradas e saídas.
-- **Gerenciamento de Seções:**
+- **Gerenciamento de seções:**
   - Cadastro e consulta de seções do depósito.
   - Atualização do tipo de bebida permitido em cada seção.
 
-### Tecnologias Utilizadas
+### Tecnologias utilizadas
 
 - **Frontend:**
   - React
@@ -266,7 +266,7 @@ Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazen
   - Docker
 
 
-### Como Executar o Projeto
+### Como executar o projeto
 
 #### Pré-requisitos
 
@@ -274,7 +274,7 @@ Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazen
 - NPM ou Yarn
 - Backend PHP configurado e em execução
 
-### Passos para Configuração
+### Passos para configuração
 
 1. **Clone o repositório:**
 
@@ -310,7 +310,7 @@ yarn start
 ```
 O frontend estará disponível em http://localhost:3000.
 
-Estrutura do Projeto
+Estrutura do projeto
 ```
 magiluc-frontend/
 ├── public/
@@ -348,7 +348,7 @@ magiluc-frontend/
 └── README.md
 ```
 
-## No final do enunciado, solicitou a minha opinião. Abaixo estão as perguntas com as respectivas respostas.
+## No final do enunciado, a empresa Magics5 solicitou a minha opinião. Abaixo estão as perguntas com as respectivas respostas.
 
 ### **O que achou do desafio? (grau de dificuldade, desafios encontrados, etc.).**
 Com uma dificuldade um pouco fácil o desafio, porém com vários imprevistos como erros de senhas de usuários do MySQL, configurações do Linux que começava a travar o andamento do projeto e o tempo passando, problemas em relação ao git e a criação do repositório onde me acostumo com o GitHub. Erros de código e os containers dando problemas sempre travando.
