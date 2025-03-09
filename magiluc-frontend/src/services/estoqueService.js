@@ -1,10 +1,8 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8000'; // URL do backend
+import api from './api';
 
 export const consultarVolumeTotalPorTipo = async (tipo) => {
     try {
-        const response = await axios.get(`${API_URL}/estoque/volume`, { params: { tipo } });
+        const response = await api.get('/estoque/volume', { params: { tipo } });
         return response.data;
     } catch (error) {
         console.error('Erro ao consultar volume total:', error);
@@ -14,7 +12,7 @@ export const consultarVolumeTotalPorTipo = async (tipo) => {
 
 export const consultarLocaisDisponiveis = async (tipo) => {
     try {
-        const response = await axios.get(`${API_URL}/estoque/locais-disponiveis`, { params: { tipo } });
+        const response = await api.get('/estoque/locais-disponiveis', { params: { tipo } });
         return response.data;
     } catch (error) {
         console.error('Erro ao consultar locais disponíveis:', error);
@@ -24,7 +22,7 @@ export const consultarLocaisDisponiveis = async (tipo) => {
 
 export const registrarEntrada = async (dados) => {
     try {
-        const response = await axios.post(`${API_URL}/estoque/entrada`, dados);
+        const response = await api.post('/estoque/entrada', dados);
         return response.data;
     } catch (error) {
         console.error('Erro ao registrar entrada:', error);
@@ -34,7 +32,7 @@ export const registrarEntrada = async (dados) => {
 
 export const registrarSaida = async (dados) => {
     try {
-        const response = await axios.post(`${API_URL}/estoque/saida`, dados);
+        const response = await api.post('/estoque/saida', dados);
         return response.data;
     } catch (error) {
         console.error('Erro ao registrar saída:', error);
