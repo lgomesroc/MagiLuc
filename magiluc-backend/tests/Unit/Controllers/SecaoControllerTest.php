@@ -11,10 +11,10 @@ class SecaoControllerTest extends TestCase
     {
         $controller = new SecaoController();
 
-        // Verifica se o método não lança exceções
+        
         $this->expectNotToPerformAssertions();
 
-        // Chama o método listarSecoes
+        
         $controller->listarSecoes();
     }
 }

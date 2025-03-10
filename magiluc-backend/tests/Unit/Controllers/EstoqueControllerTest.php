@@ -11,10 +11,10 @@ class EstoqueControllerTest extends TestCase
     {
         $controller = new EstoqueController();
 
-        // Verifica se o método não lança exceções
+        
         $this->expectNotToPerformAssertions();
 
-        // Chama o método
+        
         $controller->consultarVolumeTotalPorTipo();
     }
 }

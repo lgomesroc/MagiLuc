@@ -1,5 +1,6 @@
 import api from './api';
 
+
 export const consultarVolumeTotalPorTipo = async (tipo) => {
     try {
         const response = await api.get('/estoque/volume', { params: { tipo } });

@@ -2,8 +2,8 @@
 
 namespace App\Config;
 
-use PDO; // Importação da classe PDO
-use PDOException; // Importação da classe PDOException
+use PDO;
+use PDOException;
 
 class Database {
     private static $instance = null;

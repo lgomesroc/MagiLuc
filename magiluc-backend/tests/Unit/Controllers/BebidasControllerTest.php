@@ -11,10 +11,10 @@ class BebidasControllerTest extends TestCase
     {
         $controller = new BebidasController();
 
-        // Verifica se o método index não lança exceções
+        
         $this->expectNotToPerformAssertions();
 
-        // Chama o método index
-        $controller->index();
+        
+        $controller->listarBebidasInicio();
     }
 }

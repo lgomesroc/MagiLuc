@@ -23,8 +23,7 @@ class BebidasController {
     public function cadastrarBebida() {
         try {
             $dados = Flight::request()->data;
-            
-            // Validações básicas
+                        
             if (!isset($dados->nome) || !isset($dados->tipo)) {
                 throw new \Exception("Dados incompletos para cadastro");
             }
@@ -36,9 +35,8 @@ class BebidasController {
         }
     }
 
-    public function index()
-    {
-        // Lógica do método
+    public function listarBebidasInicio()
+    {        
         Flight::json(['message' => 'Lista de bebidas']);
     }
 }

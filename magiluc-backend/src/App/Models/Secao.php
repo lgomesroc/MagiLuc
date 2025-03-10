@@ -1,17 +1,29 @@
 <?php
-namespace Models;
+
+namespace App\Models;
 
 use App\Config\Database;
 use PDO;
+use InvalidArgumentException;
 
-class Secao {
+class Secao
+{
     private $conexao;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->conexao = Database::getInstance()->getConnection();
     }
 
-    public function inicializarSecoes() {
+    
+    public function getConnection()
+    {
+        return $this->conexao;
+    }
+
+    
+    public function inicializarSecoes()
+    {
         $secoes = [
             ['nome' => 'Seção 1', 'tipo_permitido' => null, 'capacidade_alcoolica' => 500, 'capacidade_nao_alcoolica' => 400],
             ['nome' => 'Seção 2', 'tipo_permitido' => null, 'capacidade_alcoolica' => 500, 'capacidade_nao_alcoolica' => 400],
@@ -40,13 +52,21 @@ class Secao {
         }
     }
 
-    public function listarSecoes() {
+    
+    public function listarSecoes()
+    {
         $query = "SELECT * FROM secoes";
         $stmt = $this->conexao->query($query);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function atualizarTipoPermitido($secaoId, $tipo) {
+    
+    public function atualizarTipoPermitido($secaoId, $tipo)
+    {
+        if (!in_array($tipo, ['alcoolica', 'nao_alcoolica', null])) {
+            throw new InvalidArgumentException("Tipo de bebida inválido");
+        }
+
         $query = "UPDATE secoes SET tipo_permitido = :tipo WHERE id = :secao_id";
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':tipo', $tipo);
@@ -58,25 +78,37 @@ class Secao {
         ];
     }
 
-    public function verificarTipoPermitido($secaoId) {
+    
+    public function verificarTipoPermitido($secaoId)
+    {
         $query = "SELECT tipo_permitido FROM secoes WHERE id = :secao_id";
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':secao_id', $secaoId);
         $stmt->execute();
 
-        return $stmt->fetch()['tipo_permitido'];
+        return $stmt->fetch(PDO::FETCH_ASSOC)['tipo_permitido'];
     }
 
-    public function validarEntradaBebida($secaoId, $tipo) {
+    
+    public function validarEntradaBebida($secaoId, $tipo)
+    {
         $tipoPermitido = $this->verificarTipoPermitido($secaoId);
 
-        // Se não há tipo definido, pode adicionar
+        
         if ($tipoPermitido === null) {
             $this->atualizarTipoPermitido($secaoId, $tipo);
             return true;
         }
 
-        // Se o tipo for diferente do permitido, não pode adicionar
+        
         return $tipoPermitido === $tipo;
+    }
+
+   
+    public function getAll()
+    {
+        $query = "SELECT * FROM secoes";
+        $stmt = $this->conexao->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

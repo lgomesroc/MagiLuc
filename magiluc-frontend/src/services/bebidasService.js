@@ -1,5 +1,6 @@
 import api from './api';
 
+
 export const listarBebidas = async () => {
     try {
         const response = await api.get('/bebidas');

@@ -32,8 +32,7 @@ class SecaoController {
     public function atualizarTipoPermitido() {
         try {
             $dados = Flight::request()->data;
-            
-            // Validações básicas
+                        
             if (!isset($dados->secao_id) || !isset($dados->tipo)) {
                 throw new \Exception("Dados incompletos para atualização");
             }

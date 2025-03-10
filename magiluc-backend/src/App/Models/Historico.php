@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Config\Database; // Importação corrigida
+use App\Config\Database;
 
 class Historico
 {
@@ -67,7 +67,7 @@ class Historico
     }
 
     public function registrarEntrada($dados) {
-        // Exemplo de registro de entrada no histórico
+        
         return [
             'mensagem' => 'Entrada registrada no histórico com sucesso',
             'tipo' => $dados['tipo'],
@@ -79,7 +79,7 @@ class Historico
     }
 
     public function registrarSaida($dados) {
-        // Exemplo de registro de saída no histórico
+        
         return [
             'mensagem' => 'Saída registrada no histórico com sucesso',
             'tipo' => $dados['tipo'],
