@@ -106,33 +106,27 @@ Só através via Docker.
 
 Dentro do Docker.
 
-1. **Digite o comando abaixo**:
-  ```bash
-    docker swarm init
-  ```
-Esse comando faz com que há limitações e não deixe o conteiner "roubar" os recursos computacionais do seu computador.
-
-2. **Digite o comando**:
+1. **Digite o comando**:
 ```bash
   docker-compose up --build
 ```
 
-3. **Crie um banco de dados MySQL**. (As queries para criar e popular tabelas do banco estão mais abaixo)
+2. **Crie um banco de dados MySQL**. (As queries para criar e popular tabelas do banco estão mais abaixo)
 
-4. **Configure as credenciais do banco de dados no arquivo config/database.php**.
+3. **Configure as credenciais do banco de dados no arquivo config/database.php**.
 
-5. **Suba os contêineres**:
+4. **Suba os contêineres**:
 
 ```bash
   docker-compose up -d
 ```
-6. **Inicie o servidor**:
+5. **Inicie o servidor**:
 
 ```bash
   php -S localhost:8000 -t public
 ```
 
-7. **Acesse a API**:
+6. **Acesse a API**:
 
 A API estará disponível em http://localhost:8000.
 

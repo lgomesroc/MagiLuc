@@ -14,14 +14,7 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - magiluc-network
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: "256M"
-        reservations:
-          cpus: "0.25"
-          memory: "128M"
+    
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -45,14 +38,7 @@ services:
       - db
     networks:
       - magiluc-network
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: "256M"
-        reservations:
-          cpus: "0.25"
-          memory: "128M"
+    
 
   frontend:
     build:
@@ -68,14 +54,7 @@ services:
       - backend
     networks:
       - magiluc-network
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: "256M"
-        reservations:
-          cpus: "0.25"
-          memory: "128M"
+    
 
 volumes:
   db_data:
