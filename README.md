@@ -95,8 +95,8 @@ Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, u
 
 1. **Clone o repositório**:
 ```bash
-   git clone https://bitbucket.org/lgomesroc/magiluc.git
-   cd magiluc
+   git clone https://bitbucket.org/lgomesroc/magiluc/src/master/
+   cd master
 ```
 2. **Instale as dependências**:
 
