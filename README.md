@@ -25,61 +25,61 @@ Este é um sistema de gerenciamento de estoque de bebidas desenvolvido em PHP, u
 ## **MagiLuc Backend**
 ### Estrutura do Projeto
 ```Markdown
-magiluc-backend/
-├── docker-compose.yml
-├── magiluc-backend
-│ ├── Dockerfile
-│ ├── README.md
-│ ├── composer.json
-│ ├── composer.lock
-│ ├── config
-│ │ └── database.php
-│ ├── index.php
-│ ├── phpunit.xml
-│ ├── routes
-│ │ └── api.php
-│ ├── src
-│ │ ├── App
-│ │ │ ├── Controllers
-│ │ │ │ ├── BebidasController.php
-│ │ │ │ ├── EstoqueController.php
-│ │ │ │ ├── HistoricoController.php
-│ │ │ │ └── SecaoController.php
-│ │ │ ├── Models
-│ │ │ │ ├── Bebida.php
-│ │ │ │ ├── Estoque.php
-│ │ │ │ ├── Historico.php
-│ │ │ │ └── Secao.php
-│ │ │ └── Services
-│ │ │ ├── BebidaService.php
-│ │ │ ├── EstoqueService.php
-│ │ │ ├── HistoricoService.php
-│ │ │ └── SecaoService.php
-│ │ └── Core
-│ │ └── Interfaces
-│ │ ├── ControllerInterface.php
-│ │ └── ServiceInterface.php
-│ ├── tests
-│ │ ├── Fixtures
-│ │ │ ├── bebidas.yml
-│ │ │ ├── estoque.yml
-│ │ │ ├── historico.yml
-│ │ │ └── secoes.yml
-│ │ └── Unit
-│ │ ├── Controllers
-│ │ │ ├── BebidasControllerTest.php
-│ │ │ ├── EstoqueControllerTest.php
-│ │ │ ├── HistoricoControllerTest
-│ │ │ └── SecaoControllerTest.php
-│ │ ├── Models
-│ │ │ ├── BebidaTest.php
-│ │ │ ├── EstoqueTest.php
-│ │ │ ├── HistoricoTest.php
-│ │ │ └── SecaoTest.php
-│ │ └── Services
-│ │ ├── EstoqueServiceTest.php
-│ │ ├── HistoricoServiceTest.php
-│ │ └── SecaoServiceTest.php
+  magiluc-backend/
+  ├── docker-compose.yml
+  ├── magiluc-backend
+  │ ├── Dockerfile
+  │ ├── README.md
+  │ ├── composer.json
+  │ ├── composer.lock
+  │ ├── config
+  │ │ └── database.php
+  │ ├── index.php
+  │ ├── phpunit.xml
+  │ ├── routes
+  │ │ └── api.php
+  │ ├── src
+  │ │ ├── App
+  │ │ │ ├── Controllers
+  │ │ │ │ ├── BebidasController.php
+  │ │ │ │ ├── EstoqueController.php
+  │ │ │ │ ├── HistoricoController.php
+  │ │ │ │ └── SecaoController.php
+  │ │ │ ├── Models
+  │ │ │ │ ├── Bebida.php
+  │ │ │ │ ├── Estoque.php
+  │ │ │ │ ├── Historico.php
+  │ │ │ │ └── Secao.php
+  │ │ │ └── Services
+  │ │ │ ├── BebidaService.php
+  │ │ │ ├── EstoqueService.php
+  │ │ │ ├── HistoricoService.php
+  │ │ │ └── SecaoService.php
+  │ │ └── Core
+  │ │ └── Interfaces
+  │ │ ├── ControllerInterface.php
+  │ │ └── ServiceInterface.php
+  │ ├── tests
+  │ │ ├── Fixtures
+  │ │ │ ├── bebidas.yml
+  │ │ │ ├── estoque.yml
+  │ │ │ ├── historico.yml
+  │ │ │ └── secoes.yml
+  │ │ └── Unit
+  │ │ ├── Controllers
+  │ │ │ ├── BebidasControllerTest.php
+  │ │ │ ├── EstoqueControllerTest.php
+  │ │ │ ├── HistoricoControllerTest
+  │ │ │ └── SecaoControllerTest.php
+  │ │ ├── Models
+  │ │ │ ├── BebidaTest.php
+  │ │ │ ├── EstoqueTest.php
+  │ │ │ ├── HistoricoTest.php
+  │ │ │ └── SecaoTest.php
+  │ │ └── Services
+  │ │ ├── EstoqueServiceTest.php
+  │ │ ├── HistoricoServiceTest.php
+  │ │ └── SecaoServiceTest.php
 ```
 
 ## Como Executar o Projeto
@@ -104,85 +104,93 @@ Só através via Docker.
 
 ### Configure o banco de dados:
 
-Dentro do Docker:
+Dentro do Docker.
 
-1. **Crie um banco de dados MySQL**. (As queries para criar e popular o banco estão mais abaixo)
+1. **Digite o comando abaixo**:
+  ```bash
+    docker swarm init
+  ```
+Esse comando faz com que há limitações e não deixe o conteiner "roubar" os recursos computacionais do seu computador.
 
-2. **Configure as credenciais do banco de dados no arquivo config/database.php**.
+2. **Digite o comando**:
+```bash
+  docker-compose up --build
+```
 
-3. **Inicie o servidor**:
+3. **Crie um banco de dados MySQL**. (As queries para criar e popular tabelas do banco estão mais abaixo)
+
+4. **Configure as credenciais do banco de dados no arquivo config/database.php**.
+
+5. **Suba os contêineres**:
 
 ```bash
-php -S localhost:8000 -t public
+  docker-compose up -d
 ```
-## Acesse a API:
-
-A API estará disponível somente via Docker.
-
-## Executando com Docker
-Execute o projeto usando Docker:
-
-### Suba os contêineres:
+6. **Inicie o servidor**:
 
 ```bash
-docker-compose up -d
+  php -S localhost:8000 -t public
 ```
-### Acesse a API:
+
+7. **Acesse a API**:
 
 A API estará disponível em http://localhost:8000.
 
 ## Testes
 Para executar os testes unitários, utilize o PHPUnit:
 ```bash
-./vendor/bin/phpunit tests/
+  ./vendor/bin/phpunit tests/
 ```
 
 ### Criação do Banco de Dados
-
 ```sql
-CREATE DATABASE magiluc_db;
-USE magiluc_db;
+  CREATE DATABASE magiluc_db;
+  USE magiluc_db;
 ```
+
 ### Criação das Tabelas
 a) **Tabela secoes**
 #### Armazena as seções do depósito.
 ```sql
-CREATE TABLE secoes (
+  CREATE TABLE secoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     tipo_permitido ENUM('alcoolica', 'nao_alcoolica') DEFAULT NULL,
     capacidade_alcoolica INT NOT NULL,
     capacidade_nao_alcoolica INT NOT NULL
-);
+  );
 ```
+
 b) **Tabela bebidas**
 #### Armazena as bebidas.
 ```sql
-CREATE TABLE bebidas (
+  CREATE TABLE bebidas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     tipo ENUM('alcoolica', 'nao_alcoolica') NOT NULL,
     volume DECIMAL(10, 2) NOT NULL,
     secao_id INT,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
-);
+  );
 ```
+
 c) **Tabela estoque**
 #### Armazena o estoque de bebidas por seção.
 ```sql
-CREATE TABLE estoque (
+  CREATE TABLE estoque (
     id INT AUTO_INCREMENT PRIMARY KEY,
     secao_id INT NOT NULL,
     tipo ENUM('alcoolica', 'nao_alcoolica') NOT NULL,
     volume DECIMAL(10, 2) NOT NULL,
     data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
-);
+  );
 ```
+
 d) Tabela historico
 #### Armazena o histórico de entradas e saídas de bebidas.
 ```sql
-CREATE TABLE historico (
+  CREATE TABLE historico (
     id INT AUTO_INCREMENT PRIMARY KEY,
     secao_id INT NOT NULL,
     tipo ENUM('alcoolica', 'nao_alcoolica') NOT NULL,
@@ -191,52 +199,56 @@ CREATE TABLE historico (
     responsavel VARCHAR(255) NOT NULL,
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (secao_id) REFERENCES secoes(id)
-);
+  );
 ```
-3. Inserção de Dados Iniciais
+
+### Inserção de Dados Iniciais
 Aqui as queries para inserir dados iniciais nas tabelas:
 
 a) **Inserir Seções**
 ```sql
-INSERT INTO secoes (nome, tipo_permitido, capacidade_alcoolica, capacidade_nao_alcoolica) VALUES
-('Seção 1', NULL, 500, 400),
-('Seção 2', NULL, 500, 400),
-('Seção 3', NULL, 500, 400),
-('Seção 4', NULL, 500, 400),
-('Seção 5', NULL, 500, 400);
+  INSERT INTO secoes (nome, tipo_permitido, capacidade_alcoolica, capacidade_nao_alcoolica) VALUES
+    ('Seção 1', NULL, 500, 400),
+    ('Seção 2', NULL, 500, 400),
+    ('Seção 3', NULL, 500, 400),
+    ('Seção 4', NULL, 500, 400),
+    ('Seção 5', NULL, 500, 400);
 ```
+
 b) **Inserir Bebidas**
 ```sql
-INSERT INTO bebidas (nome, tipo, volume, secao_id) VALUES
-('Cerveja', 'alcoolica', 500, 1),
-('Refrigerante', 'nao_alcoolica', 400, 2);
+  INSERT INTO bebidas (nome, tipo, volume, secao_id) VALUES
+    ('Cerveja', 'alcoolica', 500, 1),
+    ('Refrigerante', 'nao_alcoolica', 400, 2);
 ```
+
 c) **Inserir Estoque**
 ```sql
-INSERT INTO estoque (secao_id, tipo, volume) VALUES
-(1, 'alcoolica', 500),
-(2, 'nao_alcoolica', 400);
+  INSERT INTO estoque (secao_id, tipo, volume) VALUES
+    (1, 'alcoolica', 500),
+    (2, 'nao_alcoolica', 400);
 ```
+
 d) **Inserir Histórico**
 ```sql
-INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALUES
--- Entrada de bebida alcoólica na Seção 1
-(1, 'alcoolica', 500, 'entrada', 'João Silva', '2023-10-01 10:00:00'),
+  INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALUES
+    -- Entrada de bebida alcoólica na Seção 1
+    (1, 'alcoolica', 500, 'entrada', 'João Silva', '2023-10-01 10:00:00'),
 
--- Saída de bebida alcoólica na Seção 1
-(1, 'alcoolica', 200, 'saida', 'Maria Oliveira', '2023-10-01 12:00:00'),
+    -- Saída de bebida alcoólica na Seção 1
+    (1, 'alcoolica', 200, 'saida', 'Maria Oliveira', '2023-10-01 12:00:00'),
 
--- Entrada de bebida não alcoólica na Seção 2
-(2, 'nao_alcoolica', 400, 'entrada', 'Carlos Souza', '2023-10-01 14:00:00'),
+    -- Entrada de bebida não alcoólica na Seção 2
+    (2, 'nao_alcoolica', 400, 'entrada', 'Carlos Souza', '2023-10-01 14:00:00'),
 
--- Saída de bebida não alcoólica na Seção 2
-(2, 'nao_alcoolica', 150, 'saida', 'Ana Pereira', '2023-10-01 16:00:00'),
+    -- Saída de bebida não alcoólica na Seção 2
+    (2, 'nao_alcoolica', 150, 'saida', 'Ana Pereira', '2023-10-01 16:00:00'),
 
--- Entrada de bebida alcoólica na Seção 1
-(1, 'alcoolica', 300, 'entrada', 'João Silva', '2023-10-02 09:00:00'),
+    -- Entrada de bebida alcoólica na Seção 1
+    (1, 'alcoolica', 300, 'entrada', 'João Silva', '2023-10-02 09:00:00'),
 
--- Saída de bebida não alcoólica na Seção 2
-(2, 'nao_alcoolica', 100, 'saida', 'Ana Pereira', '2023-10-02 11:00:00');
+    -- Saída de bebida não alcoólica na Seção 2
+    (2, 'nao_alcoolica', 100, 'saida', 'Ana Pereira', '2023-10-02 11:00:00');
 ```
 
 ## **MagiLuc Frontend**
@@ -244,7 +256,6 @@ INSERT INTO historico (secao_id, tipo, volume, operacao, responsavel, data) VALU
 Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazenamento e estoque de bebidas em um depósito. O frontend foi construído com **React** e se integra a uma API RESTful desenvolvida em PHP.
 
 ### Funcionalidades
-
 - **Gerenciamento de Bebidas:**
   - Cadastro e consulta de bebidas.
   - Detalhes de cada bebida.
@@ -271,7 +282,7 @@ Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazen
 #### Pré-requisitos
 
 - Node.js (v16 ou superior)
-- NPM ou Yarn
+- NPM
 - Backend PHP configurado e em execução
 
 ### Passos para Configuração
@@ -282,9 +293,10 @@ Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazen
    git clone https://github.com/seu-usuario/magiluc-frontend.git
    cd magiluc-frontend
    ```
+
 2. **Execute o Docker**
     ```
-    docker-compose up --build
+      docker-compose up --build
     ```
     Assin instalará todas as dependências.
 
@@ -295,58 +307,54 @@ No diretório src/services/, atualize a constante API_URL em cada arquivo de ser
 Exemplo:
 
 ```javascript
-const API_URL = 'http://localhost:8000'; // URL do backend
+  const API_URL = 'http://localhost:8000'; // URL do backend
 ```
 
 ### Inicie o servidor de desenvolvimento:
 
 ```bash
-npm start
+  npm start
 ```
-ou
 
-```bash
-yarn start
-```
 O frontend estará disponível em http://localhost:3000.
 
 Estrutura do Projeto
 ```
-magiluc-frontend/
-├── public/
-│   ├── index.html
-├── src/
-│   ├── components/
-│   │   ├── Bebidas/
-│   │   │   ├── CadastroBebida.js
-│   │   │   ├── DetalhesBebida.js
-│   │   │   └── ListaBebidas.js
-│   │   ├── Estoque/
-│   │   │   ├── EntradaEstoque.js
-│   │   │   ├── GerenciamentoEstoque.js
-│   │   │   └── SaidaEstoque.js
-│   │   ├── Historico/
-│   │   │   └── HistoricoMovimentacoes.js
-│   │   └── Secoes/
-│   │       ├── CadastroSecao.js
-│   │       ├── DetalhesSecao.js
-│   │       └── ListaSecoes.js
-│   ├── pages/
-│   │   ├── BebidasPage.js
-│   │   ├── Dashboard.js
-│   │   ├── EstoquePage.js
-│   │   ├── HistoricoPage.js
-│   │   └── SecoesPage.js
-│   ├── services/
-│   │   ├── bebidasService.js
-│   │   ├── estoqueService.js
-│   │   ├── historicoService.js
-│   │   └── secoesService.js
-│   ├── App.js
-│   ├── index.js
-│   └── index.css
-├── package.json
-└── README.md
+  magiluc-frontend/
+  ├── public/
+  │   ├── index.html
+  ├── src/
+  │   ├── components/
+  │   │   ├── Bebidas/
+  │   │   │   ├── CadastroBebida.js
+  │   │   │   ├── DetalhesBebida.js
+  │   │   │   └── ListaBebidas.js
+  │   │   ├── Estoque/
+  │   │   │   ├── EntradaEstoque.js
+  │   │   │   ├── GerenciamentoEstoque.js
+  │   │   │   └── SaidaEstoque.js
+  │   │   ├── Historico/
+  │   │   │   └── HistoricoMovimentacoes.js
+  │   │   └── Secoes/
+  │   │       ├── CadastroSecao.js
+  │   │       ├── DetalhesSecao.js
+  │   │       └── ListaSecoes.js
+  │   ├── pages/
+  │   │   ├── BebidasPage.js
+  │   │   ├── Dashboard.js
+  │   │   ├── EstoquePage.js
+  │   │   ├── HistoricoPage.js
+  │   │   └── SecoesPage.js
+  │   ├── services/
+  │   │   ├── bebidasService.js
+  │   │   ├── estoqueService.js
+  │   │   ├── historicoService.js
+  │   │   └── secoesService.js
+  │   ├── App.js
+  │   ├── index.js
+  │   └── index.css
+  ├── package.json
+  └── README.md
 ```
 
 ## No final do enunciado, solicitou a minha opinião. Abaixo estão as perguntas com as respectivas respostas.

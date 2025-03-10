@@ -35,7 +35,7 @@ class BebidasController {
         }
     }
 
-    public function index()
+    public function listarBebidasInicio()
     {        
         Flight::json(['message' => 'Lista de bebidas']);
     }

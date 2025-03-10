@@ -15,6 +15,6 @@ class BebidasControllerTest extends TestCase
         $this->expectNotToPerformAssertions();
 
         
-        $controller->index();
+        $controller->listarBebidasInicio();
     }
 }

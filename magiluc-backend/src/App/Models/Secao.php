@@ -15,19 +15,13 @@ class Secao
         $this->conexao = Database::getInstance()->getConnection();
     }
 
-    /**
-     * Retorna a conexão com o banco de dados.
-     *
-     * @return PDO
-     */
+    
     public function getConnection()
     {
         return $this->conexao;
     }
 
-    /**
-     * Inicializa as seções no banco de dados.
-     */
+    
     public function inicializarSecoes()
     {
         $secoes = [
@@ -58,11 +52,7 @@ class Secao
         }
     }
 
-    /**
-     * Lista todas as seções.
-     *
-     * @return array
-     */
+    
     public function listarSecoes()
     {
         $query = "SELECT * FROM secoes";
@@ -70,14 +60,7 @@ class Secao
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Atualiza o tipo de bebida permitido em uma seção.
-     *
-     * @param int $secaoId ID da seção
-     * @param string|null $tipo Tipo de bebida permitido (alcoolica, nao_alcoolica, null)
-     * @return array Mensagem de sucesso
-     * @throws InvalidArgumentException Se o tipo for inválido
-     */
+    
     public function atualizarTipoPermitido($secaoId, $tipo)
     {
         if (!in_array($tipo, ['alcoolica', 'nao_alcoolica', null])) {
@@ -95,12 +78,7 @@ class Secao
         ];
     }
 
-    /**
-     * Verifica o tipo de bebida permitido em uma seção.
-     *
-     * @param int $secaoId ID da seção
-     * @return string|null Tipo de bebida permitido
-     */
+    
     public function verificarTipoPermitido($secaoId)
     {
         $query = "SELECT tipo_permitido FROM secoes WHERE id = :secao_id";
@@ -111,13 +89,7 @@ class Secao
         return $stmt->fetch(PDO::FETCH_ASSOC)['tipo_permitido'];
     }
 
-    /**
-     * Valida se uma bebida pode ser adicionada a uma seção.
-     *
-     * @param int $secaoId ID da seção
-     * @param string $tipo Tipo de bebida (alcoolica, nao_alcoolica)
-     * @return bool True se a bebida pode ser adicionada, False caso contrário
-     */
+    
     public function validarEntradaBebida($secaoId, $tipo)
     {
         $tipoPermitido = $this->verificarTipoPermitido($secaoId);
@@ -132,11 +104,7 @@ class Secao
         return $tipoPermitido === $tipo;
     }
 
-    /**
-     * Retorna todas as seções.
-     *
-     * @return array
-     */
+   
     public function getAll()
     {
         $query = "SELECT * FROM secoes";
