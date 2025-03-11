@@ -246,7 +246,6 @@ d) **Inserir Histórico**
 ```
 
 ## **MagiLuc Frontend**
->>>>>>> master
 
 Este é o frontend do projeto **MagiLuc**, desenvolvido para gerenciar o armazenamento e estoque de bebidas em um depósito. O frontend foi construído com **React** e se integra a uma API RESTful desenvolvida em PHP.
 
